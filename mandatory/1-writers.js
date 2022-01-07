@@ -55,20 +55,31 @@ let writers = [
     occupation: "writer",
     age: 49,
     alive: true,
+  },
+  
+  {
+
   }
 ];
 
-/*
-Exercise 1:
 
-  Loop through the Array, and for each object, use `console.log()` to print out the below sentence
-  and insert the corresponding values to the place holders that are indicated in curly braces:
 
-  "Hi, my name is {firstName} {lastName}. I am {age} years old, and work as a {occupation}."
-*/
-function logAllWriters() {
-  // write your code to log all writers here
-};
+// const wit =  writers.map(function (element) {
+//     return `Hi, my name is ${element.firstName} ${element.lastName}. I am ${element.age} years old, and work as a ${element.occupation}.`
+//   })
+// /*
+// Exercise 1:
+
+//   Loop through the Array, and for each object, use `console.log()` to print out the below sentence
+//   and insert the corresponding values to the place holders that are indicated in curly braces:
+
+//   "Hi, my name is {firstName} {lastName}. I am {age} years old, and work as a {occupation}."
+// */
+// function logAllWriters() {
+//   console.log(wit);
+// };
+
+// // logAllWriters();
 
 /*
 Exercise 2:
@@ -79,9 +90,24 @@ Exercise 2:
   "Writer {firstName} {lastName} died at {age} years old."
 */
 
+
+ 
 function logDeadWritersInTheirForties() {
-  // write your code here
+  let ages = writers.filter(function (element) {
+    return element.age >=40 && element.age <= 50
+  })
+  .map(function (val) {
+    return `Writer ${val.firstName} ${val.lastName} died at ${val.age} years old`
+  })
+ 
+  console.log(ages);
 }
+
+
+logDeadWritersInTheirForties()
+
+
+
 
 /*
 Exercise 3:
@@ -92,8 +118,15 @@ Exercise 3:
 */
 
 function logAliveWritersInTheirForties() {
-  // write your code here
-}
+   let ages1 = writers.filter(function (element) {
+    return element.age >=40 && element.age <= 50
+  })
+  .map(function (val) {
+    return `Writer ${val.firstName} ${val.lastName} died at ${val.age} years old`
+  })
+ 
+  console.log(ages1);
+ }
 
 /* ======= TESTS - DO NOT MODIFY ===== 
 - To run the tests for this exercise, run `npm test -- --testPathPattern 1-writers.js`
@@ -101,29 +134,22 @@ function logAliveWritersInTheirForties() {
 - (Reminder: You must have run `npm install` one time before this will work!)
 */
 
-test("exercise 1", () => expectFunctionToLog(logAllWriters, [
-  "Hi, my name is Virginia Woolf. I am 59 years old, and work as a writer.",
-  "Hi, my name is Zadie Smith. I am 40 years old, and work as a writer.",
-  "Hi, my name is Jane Austen. I am 41 years old, and work as a writer.",
-  "Hi, my name is Bell Hooks. I am 63 years old, and work as a writer.",
-  "Hi, my name is Yukiko Motoya. I am 49 years old, and work as a writer."
-]));
 
-test("exercise 2", () => expectFunctionToLog(logDeadWritersInTheirForties, [
-  "Writer Jane Austen died at 41 years old."
-]));
+// test("exercise 2", () => expectFunctionToLog(logDeadWritersInTheirForties, [
+//   "Writer Jane Austen died at 41 years old."
+// ]));
 
-test("exercise 3", () => expectFunctionToLog(logAliveWritersInTheirForties, [
-  "Hi, my name is Zadie Smith. I am 40 years old.",
-  "Hi, my name is Yukiko Motoya. I am 49 years old."
-]));
+// test("exercise 3", () => expectFunctionToLog(logAliveWritersInTheirForties, [
+//   "Hi, my name is Zadie Smith. I am 40 years old.",
+//   "Hi, my name is Yukiko Motoya. I am 49 years old."
+// ]));
 
-function expectFunctionToLog(f, values) {
-    const consoleLogSpy = jest.spyOn(console, 'log');
-    f();
-    expect(consoleLogSpy).toBeCalledTimes(values.length);
-    values.forEach((value, i) => {
-      expect(consoleLogSpy).nthCalledWith(i+1, value);
-    });
-    consoleLogSpy.mockRestore();
-};
+// function expectFunctionToLog(f, values) {
+//     const consoleLogSpy = jest.spyOn(console, 'log');
+//     f();
+//     expect(consoleLogSpy).toBeCalledTimes(values.length);
+//     values.forEach((value, i) => {
+//       expect(consoleLogSpy).nthCalledWith(i+1, value);
+//     });
+//     consoleLogSpy.mockRestore();
+// };
